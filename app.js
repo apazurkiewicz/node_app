@@ -20,11 +20,12 @@ mongoose.connect(process.env.MONGO_DB, {
     console.log(`Error connecting to DB: ${error}`)
 })
 
+const connection = await mongoose.connection.host;
 
 
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {connection : connection})
 })
 
 app.get('/createuser', async (req,res) => {
