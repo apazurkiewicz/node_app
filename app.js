@@ -20,11 +20,12 @@ mongoose.connect(process.env.MONGO_DB, {
     console.log(`Error connecting to DB: ${error}`)
 })
 
-const connection = await mongoose.connection.host;
 
 
 
-app.get('/', (req, res) => {
+
+app.get('/', async (req, res) => {
+    var connection = await mongoose.connection.host
     res.render('index', {connection : connection})
 })
 
