@@ -29,8 +29,8 @@ app.get('/', (req, res) => {
 
 app.get('/createuser', async (req,res) => {
     var user = new User({
-        name: 'Andrzej',
-        email: 'a.pazurkiewicz@gmail.com',
+        name: 'John',
+        email: 'john@gmail.com',
         password: 'password'
     })
     await user.save()
@@ -38,7 +38,8 @@ app.get('/createuser', async (req,res) => {
 } )
 
 app.get('/getusers', async (req,res) => {
-    console.log( await User.find())
+    users = await User.find()
+    res.render('users',  {users : users})
 })
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
